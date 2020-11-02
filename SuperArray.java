@@ -8,22 +8,18 @@ public class SuperArray {
 
   public SuperArray() {
     data = new String[10];
+    for (int i = 0; i < data.length; i++) {
+      data[i] = "BLANK";
+    }
     size = 0;
   }
 
 
   public int size() { //Section c
-    for (int i = 0; i < data.length; i++) {
-      if ( data[i].equals(null) ) {
-        size = i;
-      }
-    }
-    size = data.length;
     return size;
   }
 
   public boolean add(String element) { //Section d
-    size();
     if (size == data.length) {
       resize();
     }
@@ -35,15 +31,13 @@ public class SuperArray {
   }
 
   public String get(int index) { //Section e
-    size();
     if ( (index >= size) || (index < 0) ) {
-      return "There is no element at this index.";
+      return ("There is no element at this index; the size of the super array is " + size);
     }
     return data[index];
   }
 
   public String set(int index, String element) { // Section f
-    size();
     if ( (index >= size) || (index < 0) ) {
       return "There is no element at this index to be replaced.";
     }
