@@ -6,17 +6,8 @@ public class DriverSuperArray {
   public static void main(String[] args) {
 
 
-    System.out.println("The following is Mr. K's example test-");
-    SuperArray words = new SuperArray();
-    words.add("kani");
-    words.add("uni");
-    words.add("ebi");
-    for(int i = 0; i < words.size(); i++){
-      System.out.println( words.get(i) );
-    }
 
-
-    System.out.println("\nResize, add, size, and get test all in one-");
+    System.out.println("Resize, add, size, and get test all in one-");
     SuperArray skis = new SuperArray();
     for (int i = 0; i < 16; i++) {
       String object = "Hey";
@@ -35,6 +26,7 @@ public class DriverSuperArray {
       if (Math.random() > 0.67) fabric = "Silk Milk";
       skis.add(object + " : " + type + " : " + fabric);
     }
+    System.out.println("(this test needs to be revised)");
     //for(int i = 0; i < skis.size(); i++){
     //  System.out.println( skis.get(i) );
     //}
@@ -79,9 +71,8 @@ public class DriverSuperArray {
       System.out.println("set test: FAIL");
     }
 
-    System.out.println();
+    System.out.println("\nTuesday Do Now Methods Test-");
     SuperArray german = new SuperArray();
-    System.out.println("Tuesday Do Now Methods Test-");
     if (german.isEmpty() == true) {
       System.out.println("isEmpty test: SUCCESS");
     } else {
@@ -127,9 +118,8 @@ public class DriverSuperArray {
       System.out.println("contains test: FAIL");
     }
 
-    System.out.println();
+    System.out.println("\nTuesday Classwork Methods Test-");
     SuperArray europe = new SuperArray();
-    System.out.println("Tuesday Classwork Methods Test-");
     europe.add("Czech Republic");//0 --> 0 --> 0 --> 0
     europe.add("Slovakia");//1 --> 1 --> X
     europe.add("Deutschland");//2 --> 3 --> 2 --> X
@@ -178,6 +168,34 @@ public class DriverSuperArray {
       System.out.println("toArray test: SUCCESS");
     } else {
       System.out.println("toArray test: FAIL");
+    }
+
+    System.out.println("\nConstructor Test-");
+    SuperArray original = new SuperArray();
+    SuperArray capacityType = new SuperArray(4);
+    SuperArray reverseToArray = new SuperArray();
+    original.add("banana french toast");
+    original.add("cheese steak");
+    original.add("hot cereal");
+    ///////////
+    capacityType.add("banana french toast");
+    capacityType.add("cheese steak");
+    capacityType.add("hot cereal");
+    //////////
+    reverseToArray.add("banana french toast");
+    reverseToArray.add("cheese steak");
+    reverseToArray.add("hot cereal");
+    if ( original.toString().equals( capacityType.toString() ) &&
+          reverseToArray.toString().equals( capacityType.toString() ) ) {
+      System.out.println("constructor test: SUCCESS");
+    } else {
+      System.out.println("constructor test: FAIL");
+    }
+    if ( reverseToArray.size() == capacityType.size() &&
+          original.size() == capacityType.size() ) {
+      System.out.println( "constructor test: SUCCESS" );
+    } else {
+      System.out.println( "constructor test: FAIL" );
     }
 
 
