@@ -22,11 +22,11 @@ public class SuperArray {
   }
   public SuperArray(String[] arr) {
     size = 0;
-    data = new String[arr.length * 2];
-    for (int i = 0; i < (arr.length * 2) ; i++) {
-      if (i < arr.length) data[i] = arr[i];
-      if (i >= arr.length) data[i] = "BLANK";
+    data = new String[arr.length];
+    for (int i = 0; i < arr.length; i++) {
+      data[i] = arr[i];
     }
+    resize();
   } //dw about this
 
 
@@ -35,9 +35,7 @@ public class SuperArray {
   }
 
   public boolean add(String element) { //Section d
-    if (size == data.length) {
-      resize();
-    }
+    if (size == data.length) resize();
     data[size] = element; //null pointer exception!!!!
     size ++;
     return true;
@@ -65,8 +63,9 @@ public class SuperArray {
 
   private void resize() { //Section g
     String[] newsie = new String[data.length * 2];
-    for (int i = 0; i < data.length; i++) {
-      newsie[i] = data[i];
+    for (int i = 0; i < (data.length * 2); i++) {
+      if (i < data.length) newsie[i] = data[i];
+      if (i >= data.length) newsie[i] = "BLANK";
     }
     data = newsie;
     //Increase the capacity by: creating a larger array,
@@ -77,6 +76,13 @@ public class SuperArray {
 
   public boolean isEmpty() {
     return (size == 0);
+  }
+
+  public void clear() {
+    size = 0;
+    for (int i = 0; i < data.length; i++) {
+      data[i] = "BLANK";
+    }
   }
 
   public String toString() {
@@ -99,12 +105,15 @@ public class SuperArray {
     return false;
   }
 
+
   public void add(int index, String element) {
+    if (size == data.length) resize();
     String[] newbie = new String[data.length];
     for (int i = 0; i < index; i++) {
       newbie[i] = data[i];
     }
-    add(element);
+    newbie[index] = element;
+    size ++;
     for (int i = index; i < data.length - 1; i++) {
       newbie[i + 1] = data[i];
     }
@@ -112,9 +121,18 @@ public class SuperArray {
   }
 
   public String remove(int index) {
-    return "Berties";
+    String[] newbie = new String[data.length];
+    for (int i = 0; i < index; i++) {
+      newbie[i] = data[i];
+    }
+    String removed = data[index];
+    size --;
+    for (int i = index; i < data.length - 1; i++) {
+      newbie[i] = data[i + 1];
+    }
+    data = newbie;
+    return removed;
   }
-//Removes the element at the specified position in this list. Shifts any subsequent elements to the left
 
   public int indexOf(String s) {
     for (int i = 0; i < size; i++) {

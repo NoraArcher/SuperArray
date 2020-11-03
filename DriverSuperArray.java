@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class DriverSuperArray {
 
 
@@ -91,6 +93,17 @@ public class DriverSuperArray {
     } else {
       System.out.println("isEmpty test: FAIL");
     }
+    skis.clear();
+    if (skis.size() == 0) {
+      System.out.println("clear test: SUCCESS");
+    } else {
+      System.out.println("clear test: FAIL");
+    }
+    if ( skis.get(2).equals("There is no element at this index; the size of the super array is 0") ) {
+      System.out.println("clear test: SUCCESS");
+    } else {
+      System.out.println("clear test: FAIL");
+    }
     if (german.toString().equals("[Kneipp-Kur]")) {
       System.out.println("toString test: SUCCESS");
     } else {
@@ -117,12 +130,12 @@ public class DriverSuperArray {
     System.out.println();
     SuperArray europe = new SuperArray();
     System.out.println("Tuesday Classwork Methods Test-");
-    europe.add("Czech Republic");//0
-    europe.add("Slovakia");//1
-    europe.add("Deutschland");//2 --> 3
-    europe.add("Andorra");//3 --> 4
-    europe.add("France");//4 --> 5
-    europe.add(2, "Latvia");
+    europe.add("Czech Republic");//0 --> 0 --> 0 --> 0
+    europe.add("Slovakia");//1 --> 1 --> X
+    europe.add("Deutschland");//2 --> 3 --> 2 --> X
+    europe.add("Andorra");//3 --> 4 --> 3 --> 2
+    europe.add("France");//4 --> 5 --> 4 --> 3
+    europe.add(2, "Latvia"); // X --> 2 --> 1 --> 1
     if ( europe.get(2).equals("Latvia") ) {
       System.out.println("indexed add test: SUCCESS");
     } else {
@@ -133,6 +146,40 @@ public class DriverSuperArray {
     } else {
       System.out.println("indexed add test: FAIL");
     }
+    if ( europe.remove(1).equals("Slovakia") ) {
+      System.out.println("remove test: SUCCESS");
+    } else {
+      System.out.println("remove test: FAIL");
+    }
+    if ( europe.get(1).equals("Latvia") ) {
+      System.out.println("remove test: SUCCESS");
+    } else {
+      System.out.println("remove test: FAIL");
+    }
+    if ( europe.indexOf("Deutschland") == 2) {
+      System.out.println("indexOf test: SUCCESS");
+    } else {
+      System.out.println("indexOf test: FAIL");
+    }
+    String delete = europe.remove(2);
+    if ( europe.indexOf("Deutschland") == -1) {
+      System.out.println("indexOf test: SUCCESS");
+    } else {
+      System.out.println("indexOf test: FAIL");
+    }
+    String[] arr1 = {"Czech Republic", "Latvia", "Andorra", "France"};
+    String[] arr2 = {};
+    if ( Arrays.equals( europe.toArray(), arr1 ) ) {
+      System.out.println("toArray test: SUCCESS");
+    } else {
+      System.out.println("toArray test: FAIL");
+    }
+    if ( Arrays.equals( skis.toArray(), arr2 ) ) {
+      System.out.println("toArray test: SUCCESS");
+    } else {
+      System.out.println("toArray test: FAIL");
+    }
+
 
 
   }
