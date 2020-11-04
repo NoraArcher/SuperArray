@@ -10,26 +10,23 @@ public class DriverSuperArray {
     System.out.println("Resize, add, size, and get test all in one-");
     SuperArray skis = new SuperArray();
     for (int i = 0; i < 16; i++) {
-      String object = "Hey";
-      String type = "Yeah";
-      String fabric = "You";
-      if (Math.random() < 0.67) object = "Random-Access Memory";
-      if (Math.random() < 0.33) object = "Nuclear Reactor";
-      if (Math.random() > 0.67) object = "Snow Board";
-
-      if (Math.random() < 0.67) type = "DDR4";
-      if (Math.random() < 0.33) type = "Soviet RBMK";
-      if (Math.random() > 0.67) type = "Burton Deep Thinker";
-
-      if (Math.random() < 0.67) fabric = "Cashmere";
-      if (Math.random() < 0.33) fabric = "Polyester";
-      if (Math.random() > 0.67) fabric = "Silk Milk";
-      skis.add(object + " : " + type + " : " + fabric);
+      String type = "";
+      if (Math.random() > 0.1) type = "hey";
+      if (Math.random() > 0.2) type = "Random-Access Memory";
+      if (Math.random() > 0.3) type = "Nuclear Reactor";
+      if (Math.random() > 0.4) type = "Snow Board";
+      if (Math.random() > 0.5) type = "DDR4";
+      if (Math.random() > 0.6) type = "Soviet RBMK";
+      if (Math.random() > 0.7) type = "Burton Deep Thinker";
+      if (Math.random() > 0.8) type = "Cashmere";
+      if (Math.random() > 0.9) type = "Polyester";
+      if (Math.random() <= 0.1) type = "Silk Milk";
+      skis.add(" : " + type);
     }
     System.out.println("(this test needs to be revised)");
-    //for(int i = 0; i < skis.size(); i++){
-    //  System.out.println( skis.get(i) );
-    //}
+    for(int i = 0; i < skis.size(); i+= 4){
+     System.out.println( skis.get(i) );
+    }
 
 
     System.out.println("\nDifferent get and set tests-");

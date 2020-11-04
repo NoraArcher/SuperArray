@@ -8,16 +8,16 @@ public class SuperArray {
 
   public SuperArray() {
     data = new String[10];
-    for (int i = 0; i < data.length; i++) {
-      data[i] = "BLANK";
-    }
+    //for (int i = 0; i < data.length; i++) {
+    //  data[i] = "BLANK";
+    //}
     size = 0;
   }
   public SuperArray(int initialCapacity) {
     data = new String[initialCapacity];
-    for (int i = 0; i < data.length; i++) {
-      data[i] = "BLANK";
-    }
+    //for (int i = 0; i < data.length; i++) {
+    //  data[i] = "BLANK";
+    //}
     size = 0;
   }
   public SuperArray(String[] arr) {
@@ -65,7 +65,7 @@ public class SuperArray {
     String[] newsie = new String[data.length * 2];
     for (int i = 0; i < (data.length * 2); i++) {
       if (i < data.length) newsie[i] = data[i];
-      if (i >= data.length) newsie[i] = "BLANK";
+      //if (i >= data.length) newsie[i] = "BLANK";
     }
     data = newsie;
     //Increase the capacity by: creating a larger array,
@@ -80,9 +80,11 @@ public class SuperArray {
 
   public void clear() {
     size = 0;
-    for (int i = 0; i < data.length; i++) {
-      data[i] = "BLANK";
-    }
+    String[] arr = new String[data.length];
+    data = arr;
+    //for (int i = 0; i < data.length; i++) {
+    //  data[i] = "BLANK";
+    //}
   }
 
   public String toString() {
