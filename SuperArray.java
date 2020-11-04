@@ -1,11 +1,12 @@
 public class SuperArray {
 
 
-
+//Instance Variables
   private String[] data;
   private int size; //the current size
 
 
+//Constructors
   public SuperArray() {
     data = new String[10];
     //for (int i = 0; i < data.length; i++) {
@@ -21,7 +22,7 @@ public class SuperArray {
     size = 0;
   }
   public SuperArray(String[] arr) {
-    size = 0;
+    size = arr.length;
     data = new String[arr.length];
     for (int i = 0; i < arr.length; i++) {
       data[i] = arr[i];
@@ -30,6 +31,7 @@ public class SuperArray {
   } //dw about this
 
 
+//Original Methods
   public int size() { //Section c
     return size;
   }
@@ -60,7 +62,6 @@ public class SuperArray {
     //replace the element at index with new element, assume index < size-1
   }
 
-
   private void resize() { //Section g
     String[] newsie = new String[data.length * 2];
     for (int i = 0; i < (data.length * 2); i++) {
@@ -73,7 +74,7 @@ public class SuperArray {
     // and assigning the new one to the instance variable.
   }
 
-
+//First Set of Added Methods (CW 3.11.2020)
   public boolean isEmpty() {
     return (size == 0);
   }
@@ -107,7 +108,7 @@ public class SuperArray {
     return false;
   }
 
-
+//Second Set of Added Methods (HW#15)
   public void add(int index, String element) {
     if (size == data.length) resize();
     String[] newbie = new String[data.length];
@@ -153,6 +154,14 @@ public class SuperArray {
     return arr;
   }
 
+//Third Set of Added Methods (CW 5.11.2020)
+  public void reverse() {
+    String[] flipped = new String[data.length];
+    for (int i = 0; i < size; i++) {
+      flipped[i] = data[size - i - 1];
+    }
+    data = flipped;
+  }
 
 
 }
