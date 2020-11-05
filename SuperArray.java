@@ -100,12 +100,7 @@ public class SuperArray {
   }
 
   public boolean contains(String s) {
-    for (int i = 0; i < size; i++) {
-      if (data[i].equals(s)) {
-        return true;
-      }
-    }
-    return false;
+    return ( indexOf(s) != -1);
   }
 
 //Second Set of Added Methods (HW#15)
@@ -162,6 +157,28 @@ public class SuperArray {
     }
     data = flipped;
   }
+
+  public int lastIndexOf(String value) {
+    for (int i = size - 1; i >= 0; i--) {
+      if (data[i].equals(value)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  public boolean equals(SuperArray other){
+    for (int i = 0; i < size; i++) {
+      if ( !data[i].equals( other.get(i) ) ) {
+        return false;
+      }
+    }
+    return ( size == other.size() ); //ignore capacity!!!
+  }
+
+//Fourth Set of Added Methods (CW 9.11.20)
+
+
 
 
 }
