@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class DriverSuperArray {
 
-
+  //Methods Added 5.11.20
   public static void removeDuplicates(SuperArray s) {
     //keep the first occurence!! and modify the parameter do
     //not make a new super array!!
@@ -351,6 +351,18 @@ public class DriverSuperArray {
     System.out.println("Nov 9th Classwork Tests-");
     if (true) {
       System.out.println("Monday lesson is not out yet");
+      String[] animls = {"cat", "dog"};             SuperArray anima = new SuperArray(animls);
+      String[] anmals = {"bird", "mouse", "rat"};   anima.add(anmals);
+      if (anima.size() == 5) {
+        System.out.println("add array test: SUCCESS");
+      } else {
+        System.out.println("add array test: FAIL");
+      }
+      if ( anima.toString().equals("[cat, dog, bird, mouse, rat]") ) {
+        System.out.println("add array test: SUCCESS\n");
+      } else {
+        System.out.println("add array test: FAIL\n");
+      }
     }
 
 

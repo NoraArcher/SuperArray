@@ -177,7 +177,16 @@ public class SuperArray {
   }
 
 //Fourth Set of Added Methods (CW 9.11.20)
-
+  public void add(String[] matrix) {
+    int total = matrix.length + size;
+    while ( data.length <= total ) {
+      resize();
+    }
+    for (int i = 0; i < matrix.length; i++) {
+      data[size] = matrix[i];
+      size ++;
+    }
+  }
 
 
 
