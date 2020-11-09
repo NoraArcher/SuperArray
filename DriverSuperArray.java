@@ -40,15 +40,18 @@ public class DriverSuperArray {
 
 
 
-    System.out.println("Resize, Add, and Size Tests-"); //test trying get with a too large index after a resize
+    System.out.println("\nResize, Add, and Size Tests-"); //test trying get with a too large index after a resize
     if (true) {
       SuperArray skis = new SuperArray();
       for (int i = 0; i < 16; i++) {
         skis.add("B : T");
       }
-      System.out.println("It should print 'B : T' four times, each on a new line.");
       for(int i = 0; i < skis.size(); i+= 4) {
-        System.out.println( skis.get(i) );
+        if ( skis.get(i).equals("B : T") ) {
+          System.out.println("aforementioned test: SUCCESS");
+        } else {
+          System.out.println("\t\t\tresize/add/size test: FAIL");
+        }
       }
     }
 
@@ -57,22 +60,17 @@ public class DriverSuperArray {
     System.out.println("Get and Set Tests-");
     if (true) {
       SuperArray books = new SuperArray();
-      if (books.get(6).equals("There is no element at this index; the size of the super array is 0") ) {
-        System.out.println("get test: SUCCESS");
-      } else {
-        System.out.println("\t\t\tget test: FAIL...tried to retrieve:" + books.get(6));
-      }
-      if (books.get(11).equals("There is no element at this index; the size of the super array is 0")) {
-        System.out.println("get test: SUCCESS");
-      } else {
-        System.out.println("\t\t\tget test: FAIL...tried to retrieve:" + books.get(11));
-      }
       books.add("The Namesake");                  books.add("Babe");
       books.add("Stamped From The Beginning");    books.add("A Tale of Two Cities");
-      if (books.get(2) == "Stamped From The Beginning") {
+      if ( books.get(2) == "Stamped From The Beginning" ) {
+        System.out.println("get test: SUCCESS");
+      } else {
+        System.out.println("\t\t\tget test: FAIL...tried to retrieve:" + books.get(2) );
+      }
+      if ( books.get(0) == "The Namesake" ) {
         System.out.println("get test: SUCCESS\n");
       } else {
-        System.out.println("\t\t\tget test: FAIL...tried to retrieve:" + books.get(2) + "\n");
+        System.out.println("\t\t\tget test: FAIL...tried to retrieve:" + books.get(0) + "\n");
       }
       if ( books.set(3, "I Capture The Castle").equals("A Tale of Two Cities") ) {
         System.out.println("set test: SUCCESS");
@@ -115,9 +113,9 @@ public class DriverSuperArray {
       if (disease.size() == 0) {
         System.out.println("clear test: SUCCESS");
       } else {
-        System.out.println("\t\t\tclear test: FAIL... your super array's size is " + disease.size());
+        System.out.println("\t\t\tclear test: FAIL... your super arrays size is " + disease.size());
       }
-      if ( disease.get(1).equals("There is no element at this index; the size of the super array is 0") ) {
+      if (disease.contains("polio") == false) {
         System.out.println("clear test: SUCCESS\n");
       } else {
         System.out.println("\t\t\tclear test: FAIL... your super array looks like " + disease + "\n");
@@ -337,9 +335,8 @@ public class DriverSuperArray {
 
     System.out.println("\n---------------------------\n");
 
-    System.out.println("Nov 9th Classwork Tests-");
+    System.out.println("Nov 7th Non-work Tests-");
     if (true) {
-      System.out.println("Monday lesson is not out yet");
       String[] animls = {"cat", "dog"};             SuperArray anima = new SuperArray(animls);
       String[] anmals = {"bird", "mouse", "rat"};   anima.add(anmals);
       if (anima.size() == 5) {
@@ -348,9 +345,105 @@ public class DriverSuperArray {
         System.out.println("add array test: FAIL");
       }
       if ( anima.toString().equals("[cat, dog, bird, mouse, rat]") ) {
-        System.out.println("add array test: SUCCESS\n");
+        System.out.println("add array test: SUCCESS");
       } else {
-        System.out.println("add array test: FAIL\n");
+        System.out.println("add array test: FAIL");
+      }
+    }
+
+    System.out.println("\n---------------------------\n");
+
+    System.out.println("Nov 9th Error Tests-");
+    if (true) {
+      try {
+        SuperArray gardo = new SuperArray(-5);
+      } catch (IllegalArgumentException e) {
+        //e.printStackTrace();
+        System.out.println("Capacity Constructor ERROR test: SUCCESS\n");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("Capacity Constructor ERROR test: FAIL\n");
+      }
+
+      SuperArray gerdo = new SuperArray(5);
+      try {
+        System.out.println(gerdo.get(5));
+      } catch (IndexOutOfBoundsException e) {
+        //e.printStackTrace();
+        System.out.println("get ERROR test: SUCCESS\n");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("get ERROR test: FAIL\n");
+      }
+      try {
+        System.out.println(gerdo.get(-3));
+      } catch (IndexOutOfBoundsException e) {
+        //e.printStackTrace();
+        System.out.println("get ERROR test: SUCCESS\n");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("get ERROR test: FAIL\n");
+      }
+
+      SuperArray girdo = new SuperArray(5);
+      girdo.add("hola");  girdo.add("bonjour");  girdo.add("hallo");
+      try {
+        System.out.println(gerdo.set(4, "hello"));
+      } catch (IndexOutOfBoundsException e) {
+        //e.printStackTrace();
+        System.out.println("set ERROR test: SUCCESS");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("set ERROR test: FAIL");
+      }
+      try {
+        System.out.println(gerdo.set(-1, "ciao"));
+      } catch (IndexOutOfBoundsException e) {
+        //e.printStackTrace();
+        System.out.println("set ERROR test: SUCCESS\n");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("set ERROR test: FAIL\n");
+      }
+
+      SuperArray gordo = new SuperArray();
+      try {
+        gordo.add(-2, "onie");
+      } catch (IndexOutOfBoundsException e) {
+        //e.printStackTrace();
+        System.out.println("indexed add ERROR test: SUCCESS");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("indexed add ERROR test: FAIL");
+      }
+      try {
+        gordo.add(60, "twoie");
+      } catch (IndexOutOfBoundsException e) {
+        //e.printStackTrace();
+        System.out.println("indexed add ERROR test: SUCCESS\n");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("indexed add ERROR test: FAIL\n");
+      }
+
+      SuperArray gurdo =  new SuperArray();
+      try {
+        gurdo.remove(2);
+      } catch (IndexOutOfBoundsException e) {
+        //e.printStackTrace();
+        System.out.println("remove ERROR test: SUCCESS");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("remove ERROR test: FAIL");
+      }
+      try {
+        gurdo.remove(-2);
+      } catch (IndexOutOfBoundsException e) {
+        //e.printStackTrace();
+        System.out.println("remove ERROR test: SUCCESS");
+      } catch (RuntimeException e) {
+        e.printStackTrace();
+        System.out.println("remove ERROR test: FAIL");
       }
     }
 

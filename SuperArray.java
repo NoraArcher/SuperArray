@@ -15,10 +15,10 @@ public class SuperArray {
     size = 0;
   }
   public SuperArray(int initialCapacity) {
+    if (initialCapacity < 0) {
+      throw new IllegalArgumentException("Initial Capacity " + initialCapacity + " cannot be negative.");
+    }
     data = new String[initialCapacity];
-    //for (int i = 0; i < data.length; i++) {
-    //  data[i] = "BLANK";
-    //}
     size = 0;
   }
   public SuperArray(String[] arr) {
@@ -47,14 +47,14 @@ public class SuperArray {
 
   public String get(int index) { //Section e
     if ( (index >= size) || (index < 0) ) {
-      return ("There is no element at this index; the size of the super array is " + size);
+      throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
     }
     return data[index];
   }
 
   public String set(int index, String element) { // Section f
     if ( (index >= size) || (index < 0) ) {
-      return "There is no element at this index to be replaced.";
+      throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
     }
     String toReturn = data[index];
     data[index] = element;
@@ -63,7 +63,7 @@ public class SuperArray {
   }
 
   private void resize() { //Section g
-    String[] newsie = new String[data.length * 2];
+    String[] newsie = new String[data.length * 2 + 1];
     for (int i = 0; i < (data.length * 2); i++) {
       if (i < data.length) newsie[i] = data[i];
       //if (i >= data.length) newsie[i] = "BLANK";
@@ -105,6 +105,9 @@ public class SuperArray {
 
 //Second Set of Added Methods (HW#15)
   public void add(int index, String element) {
+    if ( (index > size) || (index < 0) ) {
+      throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+    }
     if (size == data.length) resize();
     String[] newbie = new String[data.length];
     for (int i = 0; i < index; i++) {
@@ -119,6 +122,9 @@ public class SuperArray {
   }
 
   public String remove(int index) {
+    if ( (index >= size) || (index < 0) ) {
+      throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+    }
     String[] newbie = new String[data.length];
     for (int i = 0; i < index; i++) {
       newbie[i] = data[i];
@@ -187,6 +193,7 @@ public class SuperArray {
       size ++;
     }
   }
+
 
 
 
